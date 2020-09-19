@@ -26,7 +26,7 @@ SECRET_KEY = 'ytoafs!opk@q&5&i$+9y7(ng-bxb(u#ve^n+iqc$$4hvm!7i$)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['energy-save-be.herokuapp.com']
+ALLOWED_HOSTS = ['energy-save-be.herokuapp.com','127.0.0.1:8000','127.0.0.1']
 
 
 # Application definition
@@ -83,6 +83,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = "backend.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
