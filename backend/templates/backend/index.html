@@ -1,5 +1,65 @@
 {% extends "backend/layout.html" %}
+{% load static %}
+
+
 
 {% block body %}
     <h1>Index</h1>
+    <div id="appliance-view">
+        <form action="" id="appliances-form" method="POST">
+            {% csrf_token %}
+            <div>
+                <input type="number" id="TVs_num" placeholder="Number of Tvs" >
+            </div>
+            <div>
+                <input type="number" id="Decoders_num" placeholder="Number of Decoders" > 
+            </div>           
+            <div>
+                <input type="number" id="SoundSystems_num" placeholder="Number of SoundSystems">
+            </div>
+            <div>
+                <input type="number" id="Lights_num" placeholder="Number of Lights">   
+            </div>
+            <div>
+                <input type="number" id="Heaters_num" placeholder="Number of Heaters"> 
+            </div>   
+            <div>
+                <input type="number" id="Stoves_num" placeholder="Number of Stoves">
+            </div>  
+            <div>
+                <input type="number" id="Fridges_num" placeholder="Number of Fridges">
+            </div>
+            <div>
+                <input type="number" id="Kettles_num" placeholder="Number of Kettles"> 
+            </div>
+            <div>
+                <input type="number" id="Microwaves_num" placeholder="Number of Microwaves">
+            </div>
+            <div>
+                <input type="number" id="Computers_num" placeholder="Number of Computers"> 
+            </div>
+            <div>
+                <input type="number" id="Printers_num" placeholder="Number of Printers">
+            </div>
+            <div>
+                <input type="number" id="Modems_num" placeholder="Number of Modems">
+            </div>
+            <div>
+                <input type="number" id="ElectricBlanket_num" placeholder="Number of ElectricBlankets">
+            </div>
+            <div>
+                <input type="number" id="Phones_num" placeholder="Number of Phones">
+            </div>
+            <br>
+             <div>
+                <input type="submit" value="Calculate">
+             </div>
+        </form>
+    </div>
+
+    <button id="twabam">Twabam</button>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'backend/calculation.js' %}"></script>
 {% endblock %}
