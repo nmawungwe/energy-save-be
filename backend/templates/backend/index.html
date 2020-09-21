@@ -4,60 +4,123 @@
 
 
 {% block body %}
-    <h1>Index</h1>
-    <div id="appliance-view">
-        <form action="" id="appliances-form" method="POST">
-            {% csrf_token %}
-            <div>
-                <input type="number" id="TVs_num" placeholder="Number of Tvs" >
-            </div>
-            <div>
-                <input type="number" id="Decoders_num" placeholder="Number of Decoders" > 
-            </div>           
-            <div>
-                <input type="number" id="SoundSystems_num" placeholder="Number of SoundSystems">
-            </div>
-            <div>
-                <input type="number" id="Lights_num" placeholder="Number of Lights">   
-            </div>
-            <div>
-                <input type="number" id="Heaters_num" placeholder="Number of Heaters"> 
-            </div>   
-            <div>
-                <input type="number" id="Stoves_num" placeholder="Number of Stoves">
-            </div>  
-            <div>
-                <input type="number" id="Fridges_num" placeholder="Number of Fridges">
-            </div>
-            <div>
-                <input type="number" id="Kettles_num" placeholder="Number of Kettles"> 
-            </div>
-            <div>
-                <input type="number" id="Microwaves_num" placeholder="Number of Microwaves">
-            </div>
-            <div>
-                <input type="number" id="Computers_num" placeholder="Number of Computers"> 
-            </div>
-            <div>
-                <input type="number" id="Printers_num" placeholder="Number of Printers">
-            </div>
-            <div>
-                <input type="number" id="Modems_num" placeholder="Number of Modems">
-            </div>
-            <div>
-                <input type="number" id="ElectricBlanket_num" placeholder="Number of ElectricBlankets">
-            </div>
-            <div>
-                <input type="number" id="Phones_num" placeholder="Number of Phones">
-            </div>
-            <br>
-             <div>
-                <input type="submit" value="Calculate">
-             </div>
-        </form>
+    <div id="home_view">
+        <button id="check">Check</button>
     </div>
-
-    <button id="twabam">Twabam</button>
+    <div id="appliance_view_form">
+        <div id="appliance_form">
+            <form action="" id="appliances_form" method="POST">
+                {% csrf_token %}
+                <div>
+                    <input type="number" id="TVs_num" placeholder="Number of Tvs" >
+                </div>
+                <div>
+                    <input type="number" id="Decoders_num" placeholder="Number of Decoders" > 
+                </div>           
+                <div>
+                    <input type="number" id="SoundSystems_num" placeholder="Number of SoundSystems">
+                </div>
+                <div>
+                    <input type="number" id="Lights_num" placeholder="Number of Lights">   
+                </div>
+                <div>
+                    <input type="number" id="Heaters_num" placeholder="Number of Heaters"> 
+                </div>   
+                <div>
+                    <input type="number" id="Stoves_num" placeholder="Number of Stoves">
+                </div>  
+                <div>
+                    <input type="number" id="Fridges_num" placeholder="Number of Fridges">
+                </div>
+                <div>
+                    <input type="number" id="Kettles_num" placeholder="Number of Kettles"> 
+                </div>
+                <div>
+                    <input type="number" id="Microwaves_num" placeholder="Number of Microwaves">
+                </div>
+                <div>
+                    <input type="number" id="Computers_num" placeholder="Number of Computers"> 
+                </div>
+                <div>
+                    <input type="number" id="Printers_num" placeholder="Number of Printers">
+                </div>
+                <div>
+                    <input type="number" id="Modems_num" placeholder="Number of Modems">
+                </div>
+                <div>
+                    <input type="number" id="ElectricBlanket_num" placeholder="Number of ElectricBlankets">
+                </div>
+                <div>
+                    <input type="number" id="Phones_num" placeholder="Number of Phones">
+                </div>
+                <br>
+                 <div>
+                    <input type="submit" value="Calculate">
+                 </div>
+            </form>
+        </div>
+    </div>
+    <div id="appliance_view_list">
+        <div id="appliance_list">
+            <div class="TVs_num_sec">
+                <p>TVs number:</p><div class="TVs_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Decoders_num_sec">
+                <p>TVs number:</p><div class="Decoders_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="SoundSystems_num_sec">
+                <p>TVs number:</p><div class="SoundSystems_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Lights_num_sec">
+                <p>TVs number:</p><div class="Lights_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Heaters_num_sec">
+                <p>TVs number:</p><div class="Heaters_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Stoves_num_sec">
+                <p>TVs number:</p><div class="Stoves_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Fridges_num_sec">
+                <p>TVs number:</p><div class="Fridges_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Kettles_num_sec">
+                <p>TVs number:</p><div class="Kettles_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Microwaves_num_sec">
+                <p>TVs number:</p><div class="Microwaves_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Computers_num_sec">
+                <p>TVs number:</p><div class="Computers_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Printers_num_sec">
+                <p>TVs number:</p><div class="Printers_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Modems_num_sec">
+                <p>TVs number:</p><div class="Modems_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="ElectricBlanket_num_sec">
+                <p>TVs number:</p><div class="ElectricBlanket_num"></div>
+                <button>Edit</button>
+            </div>
+            <div class="Phones_num_sec">
+                <p>TVs number:</p><div class="Phones_num"></div>
+                <button>Edit</button>
+            </div>
+        </div>
+    </div>
+    <div id="user_id">{{ request.user.id|json_script:"user_id" }}</div>
 {% endblock %}
 
 {% block script %}

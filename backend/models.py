@@ -5,8 +5,8 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     pass
 
-class Appliance(models.Model):
-    user = models.ForeignKey(User, related_name="appliances", on_delete=models.CASCADE)
+class Appliance_list(models.Model):
+    user = models.ForeignKey(User, related_name="appliances", on_delete=models.CASCADE, unique=True)
     TVs_num = models.CharField(max_length=255, default=0)
     Decoders_num = models.CharField(max_length=255, default=0)
     SoundSystems_num = models.CharField(max_length=255, default=0)
@@ -21,6 +21,27 @@ class Appliance(models.Model):
     Modems_num = models.CharField(max_length=255, default=0)
     ElectricBlanket_num = models.CharField(max_length=255, default=0)
     Phones_num = models.CharField(max_length=255, default=0)
+
+    def serialize(self):
+        return {
+            'id':self.id,
+            'user_id':self.user.id,
+            'TVs-num':self.TVs_num,
+            'Decoders_num':self.Decoders_num,
+            'SoundSystems_num':self.SoundSystems_num,
+            'Lights_num':self.Lights_num,
+            'Heaters_num':self.Heaters_num,
+            'Stoves_num':self.Stoves_num,
+            'Fridges_num':self.Fridges_num,
+            'Kettles_num':self.Kettles_num,
+            'Microwaves_num':self.Microwaves_num,
+            'Computers_num':self.Computers_num,
+            'Printers_num':self.Printers_num,
+            'Modems_num ':self.Modems_num ,
+            'ElectricBlanket_num':self.ElectricBlanket_num,
+            'Phones_num':self.Phones_num
+        }
+
 
 
 
