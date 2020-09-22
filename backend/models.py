@@ -7,26 +7,26 @@ class User(AbstractUser):
 
 class Appliance_list(models.Model):
     user = models.ForeignKey(User, related_name="appliances", on_delete=models.CASCADE, unique=True)
-    TVs_num = models.CharField(max_length=255, default=0)
-    Decoders_num = models.CharField(max_length=255, default=0)
-    SoundSystems_num = models.CharField(max_length=255, default=0)
-    Lights_num = models.CharField(max_length=255, default=0)
-    Heaters_num = models.CharField(max_length=255, default=0)
-    Stoves_num = models.CharField(max_length=255, default=0)
-    Fridges_num = models.CharField(max_length=255, default=0)
-    Kettles_num = models.CharField(max_length=255, default=0)
-    Microwaves_num = models.CharField(max_length=255, default=0)
-    Computers_num = models.CharField(max_length=255, default=0)
-    Printers_num = models.CharField(max_length=255, default=0)
-    Modems_num = models.CharField(max_length=255, default=0)
-    ElectricBlanket_num = models.CharField(max_length=255, default=0)
-    Phones_num = models.CharField(max_length=255, default=0)
+    TVs_num = models.CharField(max_length=255, default="0")
+    Decoders_num = models.CharField(max_length=255, default="0")
+    SoundSystems_num = models.CharField(max_length=255, default="0")
+    Lights_num = models.CharField(max_length=255, default="0")
+    Heaters_num = models.CharField(max_length=255, default="0")
+    Stoves_num = models.CharField(max_length=255, default="0")
+    Fridges_num = models.CharField(max_length=255, default="0")
+    Kettles_num = models.CharField(max_length=255, default="0")
+    Microwaves_num = models.CharField(max_length=255, default="0")
+    Computers_num = models.CharField(max_length=255, default="0")
+    Printers_num = models.CharField(max_length=255, default="0")
+    Modems_num = models.CharField(max_length=255, default="0")
+    ElectricBlankets_num = models.CharField(max_length=255, default="0")
+    Phones_num = models.CharField(max_length=255, default="0")
 
     def serialize(self):
         return {
             'id':self.id,
             'user_id':self.user.id,
-            'TVs-num':self.TVs_num,
+            'TVs_num':self.TVs_num,
             'Decoders_num':self.Decoders_num,
             'SoundSystems_num':self.SoundSystems_num,
             'Lights_num':self.Lights_num,
@@ -38,7 +38,7 @@ class Appliance_list(models.Model):
             'Computers_num':self.Computers_num,
             'Printers_num':self.Printers_num,
             'Modems_num ':self.Modems_num ,
-            'ElectricBlanket_num':self.ElectricBlanket_num,
+            'ElectricBlankets_num':self.ElectricBlankets_num,
             'Phones_num':self.Phones_num
         }
 

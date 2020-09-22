@@ -84,9 +84,9 @@ def appliances(request):
         Computers_num = data.get("Computers_num")
         Printers_num = data.get("Printers_num")
         Modems_num = data.get("Modems_num")
-        ElectricBlanket_num = data.get("ElectricBlanket_num")
+        ElectricBlankets_num = data.get("ElectricBlankets_num")
         Phones_num = data.get("Phones_num")
-        addition = Appliance_list(user=request.user, TVs_num=TVs_num, Decoders_num=Decoders_num, SoundSystems_num=SoundSystems_num, Lights_num=Lights_num , Heaters_num=Heaters_num, Stoves_num=Stoves_num, Fridges_num=Fridges_num, Kettles_num=Kettles_num, Microwaves_num=Microwaves_num, Computers_num=Computers_num, Printers_num=Printers_num, Modems_num=Modems_num, ElectricBlanket_num=ElectricBlanket_num, Phones_num=Phones_num)
+        addition = Appliance_list(user=request.user, TVs_num=TVs_num, Decoders_num=Decoders_num, SoundSystems_num=SoundSystems_num, Lights_num=Lights_num , Heaters_num=Heaters_num, Stoves_num=Stoves_num, Fridges_num=Fridges_num, Kettles_num=Kettles_num, Microwaves_num=Microwaves_num, Computers_num=Computers_num, Printers_num=Printers_num, Modems_num=Modems_num, ElectricBlankets_num=ElectricBlankets_num, Phones_num=Phones_num)
         addition.save()
         return JsonResponse({"message":"Addition of appliances was successful"},)
         

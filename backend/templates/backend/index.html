@@ -9,115 +9,173 @@
     </div>
     <div id="appliance_view_form">
         <div id="appliance_form">
-            <form action="" id="appliances_form" method="POST">
+            <form action="" id="appliances_form" method="POST" class="form-group">
                 {% csrf_token %}
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Tvs</label>
                     <input type="number" id="TVs_num" placeholder="Number of Tvs" >
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Decoders</label>
                     <input type="number" id="Decoders_num" placeholder="Number of Decoders" > 
                 </div>           
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Sound Systems</label>
                     <input type="number" id="SoundSystems_num" placeholder="Number of SoundSystems">
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Lights</label>
                     <input type="number" id="Lights_num" placeholder="Number of Lights">   
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Heaters</label>
                     <input type="number" id="Heaters_num" placeholder="Number of Heaters"> 
                 </div>   
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Stoves</label>
                     <input type="number" id="Stoves_num" placeholder="Number of Stoves">
                 </div>  
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Fridges</label>
                     <input type="number" id="Fridges_num" placeholder="Number of Fridges">
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Kettles</label>
                     <input type="number" id="Kettles_num" placeholder="Number of Kettles"> 
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Microwave</label>
                     <input type="number" id="Microwaves_num" placeholder="Number of Microwaves">
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Computers</label>
                     <input type="number" id="Computers_num" placeholder="Number of Computers"> 
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Printers</label>
                     <input type="number" id="Printers_num" placeholder="Number of Printers">
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Modems</label>
                     <input type="number" id="Modems_num" placeholder="Number of Modems">
                 </div>
-                <div>
-                    <input type="number" id="ElectricBlanket_num" placeholder="Number of ElectricBlankets">
+                <div class="form-group">
+                    <label for="TVs_num">Number of Electric Blankets</label>
+                    <input type="number" id="ElectricBlankets_num" placeholder="Number of Electric Blankets">
                 </div>
-                <div>
+                <div class="form-group">
+                    <label for="TVs_num">Number of Phones</label>
                     <input type="number" id="Phones_num" placeholder="Number of Phones">
                 </div>
                 <br>
                  <div>
-                    <input type="submit" value="Calculate">
+                    <button type="submit" class="btn btn-primary">Calculate</button>
                  </div>
             </form>
+            <div id="result">
+            </div>
         </div>
     </div>
     <div id="appliance_view_list">
         <div id="appliance_list">
             <div class="TVs_num_sec">
-                <p>TVs number:</p><div class="TVs_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>TVs number:</p><div class="TVs_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Decoders_num_sec">
-                <p>TVs number:</p><div class="Decoders_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Decoders number:</p><div class="Decoders_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="SoundSystems_num_sec">
-                <p>TVs number:</p><div class="SoundSystems_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>SoundSystems number:</p><div class="SoundSystems_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Lights_num_sec">
-                <p>TVs number:</p><div class="Lights_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Lights number:</p><div class="Lights_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Heaters_num_sec">
-                <p>TVs number:</p><div class="Heaters_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Heaters number:</p><div class="Heaters_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Stoves_num_sec">
-                <p>TVs number:</p><div class="Stoves_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Stoves number:</p><div class="Stoves_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Fridges_num_sec">
-                <p>TVs number:</p><div class="Fridges_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Fridges number:</p><div class="Fridges_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Kettles_num_sec">
-                <p>TVs number:</p><div class="Kettles_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Kettles number:</p><div class="Kettles_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Microwaves_num_sec">
-                <p>TVs number:</p><div class="Microwaves_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Microwaves number:</p><div class="Microwaves_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Computers_num_sec">
-                <p>TVs number:</p><div class="Computers_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Computers number:</p><div class="Computers_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Printers_num_sec">
-                <p>TVs number:</p><div class="Printers_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Printers number:</p><div class="Printers_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Modems_num_sec">
-                <p>TVs number:</p><div class="Modems_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Modems number:</p><div class="Modems_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
-            <div class="ElectricBlanket_num_sec">
-                <p>TVs number:</p><div class="ElectricBlanket_num"></div>
-                <button>Edit</button>
+            <br>
+            <div class="ElectricBlankets_num_sec">
+                <button class="btn btn-outline-dark btn-block">
+                    <p>ElectricBlankets number:</p><div class="ElectricBlankets_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
             <div class="Phones_num_sec">
-                <p>TVs number:</p><div class="Phones_num"></div>
-                <button>Edit</button>
+                <button class="btn btn-outline-dark btn-block">
+                    <p>Phones number:</p><div class="Phones_num"></div>
+                    <a href="#">Edit</a>
+                </button>
             </div>
+            <br>
         </div>
     </div>
     <div id="user_id">{{ request.user.id|json_script:"user_id" }}</div>
