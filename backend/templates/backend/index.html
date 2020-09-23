@@ -4,76 +4,78 @@
 
 
 {% block body %}
-    <div id="home_view">
-        <button id="check">Check</button>
-    </div>
     <div id="appliance_view_form">
+        <div id="home_view">
+            <button id="check">Check</button>
+        </div>
         <div id="appliance_form">
-            <form action="" id="appliances_form" method="POST" class="form-group">
+            <form action="" id="appliances_form" class="form-group">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="TVs_num">Number of Tvs</label>
-                    <input type="number" id="TVs_num" placeholder="Number of Tvs" >
+                <div id="form_inputs">
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Tvs</label>
+                        <input type="number" id="TVs_num" placeholder="Number of Tvs" >
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Decoders</label>
+                        <input type="number" id="Decoders_num" placeholder="Number of Decoders" > 
+                    </div>           
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Sound Systems</label>
+                        <input type="number" id="SoundSystems_num" placeholder="Number of SoundSystems">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Lights</label>
+                        <input type="number" id="Lights_num" placeholder="Number of Lights">   
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Heaters</label>
+                        <input type="number" id="Heaters_num" placeholder="Number of Heaters"> 
+                    </div>   
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Stoves</label>
+                        <input type="number" id="Stoves_num" placeholder="Number of Stoves">
+                    </div>  
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Fridges</label>
+                        <input type="number" id="Fridges_num" placeholder="Number of Fridges">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Kettles</label>
+                        <input type="number" id="Kettles_num" placeholder="Number of Kettles"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Microwave</label>
+                        <input type="number" id="Microwaves_num" placeholder="Number of Microwaves">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Computers</label>
+                        <input type="number" id="Computers_num" placeholder="Number of Computers"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Printers</label>
+                        <input type="number" id="Printers_num" placeholder="Number of Printers">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Modems</label>
+                        <input type="number" id="Modems_num" placeholder="Number of Modems">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Electric Blankets</label>
+                        <input type="number" id="ElectricBlankets_num" placeholder="Number of Electric Blankets">
+                    </div>
+                    <div class="form-group">
+                        <label for="TVs_num">Number of Phones</label>
+                        <input type="number" id="Phones_num" placeholder="Number of Phones">
+                    </div>
+                    <br>
+                     <div>
+                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Decoders</label>
-                    <input type="number" id="Decoders_num" placeholder="Number of Decoders" > 
-                </div>           
-                <div class="form-group">
-                    <label for="TVs_num">Number of Sound Systems</label>
-                    <input type="number" id="SoundSystems_num" placeholder="Number of SoundSystems">
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Lights</label>
-                    <input type="number" id="Lights_num" placeholder="Number of Lights">   
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Heaters</label>
-                    <input type="number" id="Heaters_num" placeholder="Number of Heaters"> 
-                </div>   
-                <div class="form-group">
-                    <label for="TVs_num">Number of Stoves</label>
-                    <input type="number" id="Stoves_num" placeholder="Number of Stoves">
-                </div>  
-                <div class="form-group">
-                    <label for="TVs_num">Number of Fridges</label>
-                    <input type="number" id="Fridges_num" placeholder="Number of Fridges">
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Kettles</label>
-                    <input type="number" id="Kettles_num" placeholder="Number of Kettles"> 
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Microwave</label>
-                    <input type="number" id="Microwaves_num" placeholder="Number of Microwaves">
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Computers</label>
-                    <input type="number" id="Computers_num" placeholder="Number of Computers"> 
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Printers</label>
-                    <input type="number" id="Printers_num" placeholder="Number of Printers">
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Modems</label>
-                    <input type="number" id="Modems_num" placeholder="Number of Modems">
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Electric Blankets</label>
-                    <input type="number" id="ElectricBlankets_num" placeholder="Number of Electric Blankets">
-                </div>
-                <div class="form-group">
-                    <label for="TVs_num">Number of Phones</label>
-                    <input type="number" id="Phones_num" placeholder="Number of Phones">
-                </div>
-                <br>
-                 <div>
-                    <button type="submit" class="btn btn-primary">Calculate</button>
-                 </div>
             </form>
-            <div id="result">
-            </div>
+            <button id="calculate" class="btn btn-primary">Calculate</button>
+        </div>
+        <div id="result">
         </div>
     </div>
     <div id="appliance_view_list">

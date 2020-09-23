@@ -6,7 +6,7 @@ class User(AbstractUser):
     pass
 
 class Appliance_list(models.Model):
-    user = models.ForeignKey(User, related_name="appliances", on_delete=models.CASCADE, unique=True)
+    user = models.ForeignKey(User, related_name="appliances", on_delete=models.CASCADE)
     TVs_num = models.CharField(max_length=255, default="0")
     Decoders_num = models.CharField(max_length=255, default="0")
     SoundSystems_num = models.CharField(max_length=255, default="0")
