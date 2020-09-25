@@ -69,7 +69,7 @@ def appliances(request):
         appliances_list = Appliance_list.objects.get(user=request.user.id)
         appliances_list = json.dumps(appliances_list.serialize())
         appliances_list = json.loads(appliances_list)
-        return JsonResponse(appliances_list, safe=False)
+        return JsonResponse(appliances_list, safe=False, status=200)
     else:
         data = json.loads(request.body)
         TVs_num = data.get("TVs_num")
@@ -88,6 +88,6 @@ def appliances(request):
         Phones_num = data.get("Phones_num")
         addition = Appliance_list(user=request.user, TVs_num=TVs_num, Decoders_num=Decoders_num, SoundSystems_num=SoundSystems_num, Lights_num=Lights_num , Heaters_num=Heaters_num, Stoves_num=Stoves_num, Fridges_num=Fridges_num, Kettles_num=Kettles_num, Microwaves_num=Microwaves_num, Computers_num=Computers_num, Printers_num=Printers_num, Modems_num=Modems_num, ElectricBlankets_num=ElectricBlankets_num, Phones_num=Phones_num)
         addition.save()
-        return JsonResponse({"message":"Addition of appliances was successful"},)
+        return JsonResponse({"message":"Addition of appliances was successful"}, status=201)
         
 

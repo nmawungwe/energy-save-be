@@ -127,9 +127,8 @@ document.addEventListener('DOMContentLoaded', function(){
         //     },
         //     )
         // }
-
-document.querySelector('#check').addEventListener('click', ()=>{
-    energy_calculation()
+document.querySelector('#calculator').addEventListener('click', ()=>{
+    appliance_view_form()
 })
 
 
@@ -150,7 +149,8 @@ energy_calculation = ()=>{
             const ElectricBlankets_num = document.querySelector('#ElectricBlankets_num').value;
             const Phones_num = document.querySelector('#Phones_num').value;
             let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            
+
+
                         // usage values in kWh per day
             let TV_usage = 0.72
             let Decoder_usage = 0.72
@@ -171,35 +171,146 @@ energy_calculation = ()=>{
             total_usage = (TVs_num*TV_usage)+(Decoders_num*Decoder_usage)+(SoundSystems_num*Sound_system)+(Lights_num*Light)+(Heaters_num*Heater)+(Stoves_num*Stove)+(Fridges_num*Fridge)+(Kettles_num*Kettle)+(Microwaves_num*Microwave)+(Computers_num*Computer)+(Printers_num*Printer)+(Modems_num*Modem)+(ElectricBlankets_num*Electric_blanket)+(Phones_num*Phone)
             console.log(total_usage)
 
+ 
+            if (total_usage > 7.75) {
+                            //scare the shit out of them
+                            result_view()
+                                let btn_recalculate = document.createElement("BUTTON")
+                                btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+                                btn_recalculate.innerHTML = `Do you want to recalculate consumption?`
+                                document.querySelector('#result').appendChild(btn_recalculate)
+                                let btn_notification = document.createElement("BUTTON")
+                                btn_notification.setAttribute("class", "btn btn-danger")
+                                btn_notification.innerHTML = `You are above average consumption: ${total_usage} kWh`
+                                document.querySelector('#result').appendChild(btn_notification) 
+                                let btn_save = document.createElement("BUTTON")
+                                btn_save.setAttribute('class','btn btn-info btn_save')
+                                btn_save.innerHTML =`Save appliance list`
+                                document.querySelector('#result').appendChild(btn_save)
+                                document.querySelector('.btn_recalc').addEventListener('click', ()=>{
+                                    appliance_view_form()
+                                })
+                                document.querySelector('.btn_save').addEventListener('click', ()=>{
+                                    save_appliance_list()
+                                    appliance_view_form()
+                                })                               
 
+                        } else if (4.65 <= total_usage && total_usage <= 7.75 ) {
+                            // tell them something nice
+                            result_view()
+                            let btn_recalculate = document.createElement("BUTTON")
+                            btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+                            btn_recalculate.innerHTML = `Do you want to recalculate consumption?`
+                            document.querySelector('#result').appendChild(btn_recalculate)
+                            let btn_notification = document.createElement("BUTTON")
+                            btn_notification.setAttribute("class", "btn btn-warning")
+                            btn_notification.innerHTML = `You are average consumption: ${total_usage} kWh`
+                            document.querySelector('#result').appendChild(btn_notification)
+                            let btn_save = document.createElement("BUTTON")
+                            btn_save.setAttribute('class','btn btn-info btn_save')
+                            btn_save.innerHTML =`Save appliance list`
+                            document.querySelector('#result').appendChild(btn_save)
+                            document.querySelector('.btn_recalc').addEventListener('click', ()=>{
+                                appliance_view_form()
+                            })
+                            document.querySelector('.btn_save').addEventListener('click', ()=>{
+                                save_appliance_list()
+                                appliance_view_form()
+                            })
+                        } else {
+                            //suck their nuts
+                            result_view()
+                            let btn_recalculate = document.createElement("BUTTON")
+                            btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+                            btn_recalculate.innerHTML = `Do you want to recalculate consumption?`
+                            document.querySelector('#result').appendChild(btn_recalculate)
+                            let btn_notification = document.createElement("BUTTON")
+                            btn_notification.setAttribute("class", "btn btn-success")
+                            btn_notification.innerHTML = `You are below average consumption: ${total_usage}kWh`
+                            document.querySelector('#result').appendChild(btn_notification)
+                            let btn_save =document.createElement("BUTTON")
+                            btn_save.setAttribute("class", "btn btn-info btn_save")
+                            btn_save.innerHTML = `Save appliance list`
+                            document.querySelector('#result').appendChild(btn_save)
+                            document.querySelector('.btn_recalc').addEventListener('click', ()=>{
+                                appliance_view_form()   
+                            })
+                            document.querySelector('.btn_save').addEventListener('click', ()=>{
+                                save_appliance_list()
+                                appliance_view_form()
+                            })
+                        }
+        
 
-let request = new Request(
-                '/appliances',
-                {headers: {'X-CSRFToken': csrftoken}}
-            );
-            fetch(request, {
-                method: 'POST',
-                body: JSON.stringify({
-                    TVs_num: TVs_num,
-                    Decoders_num: Decoders_num,
-                    SoundSystems_num: SoundSystems_num,
-                    Lights_num: Lights_num,
-                    Heaters_num: Heaters_num,
-                    Stoves_num : Stoves_num,
-                    Fridges_num: Fridges_num,
-                    Kettles_num: Kettles_num,
-                    Microwaves_num: Microwaves_num,
-                    Computers_num: Computers_num,
-                    Printers_num: Printers_num,
-                    Modems_num: Modems_num,
-                    ElectricBlankets_num: ElectricBlankets_num,
-                    Phones_num: Phones_num
-                })
-            }).then(response => response.json()).then(result=>{
-                console.log(result)
+    save_appliance_list = ()=> {
+        let request = new Request(
+            '/appliances',
+            {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'POST',
+            body: JSON.stringify({
+                TVs_num: TVs_num,
+                Decoders_num: Decoders_num,
+                SoundSystems_num: SoundSystems_num,
+                Lights_num: Lights_num,
+                Heaters_num: Heaters_num,
+                Stoves_num : Stoves_num,
+                Fridges_num: Fridges_num,
+                Kettles_num: Kettles_num,
+                Microwaves_num: Microwaves_num,
+                Computers_num: Computers_num,
+                Printers_num: Printers_num,
+                Modems_num: Modems_num,
+                ElectricBlankets_num: ElectricBlankets_num,
+                Phones_num: Phones_num
             })
-            return false;
+        }).then(response => response.json()).then(result=>{
+            console.log(result)
+        })
+        return false;
+
+    }
 }
+
+document.querySelector('#appliance_list').addEventListener('click', ()=>{
+
+               fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
+                if (appliance_list.Message==="Appliance list doesn't exist") {
+                    redirect_view()
+                    let btn_redirect = document.createElement("BUTTON")
+                    btn_redirect.setAttribute('class', 'btn btn-warning btn_redirect')
+                    btn_redirect.innerHTML=`You are a first time user without an appliance list. Click here to enter appliances`
+                    document.querySelector('#redirection_view').appendChild(btn_redirect)
+                    document.querySelector('.btn_redirect').addEventListener('click', ()=>{
+                    appliance_view_form()
+                    })
+                } else {
+                appliance_view_list()
+                document.querySelector('.TVs_num').innerHTML=`<p>${appliance_list.TVs_num}</p>`,
+                document.querySelector('.Decoders_num').innerHTML=`<p>${appliance_list.Decoders_num}</p>`,
+                document.querySelector('.SoundSystems_num').innerHTML=`<p>${appliance_list.SoundSystems_num}</p>`,
+                document.querySelector('.Lights_num').innerHTML=`<p>${appliance_list.Lights_num}</p>`,
+                document.querySelector('.Heaters_num').innerHTML=`<p>${appliance_list.Heaters_num}</p>`,
+                document.querySelector('.Stoves_num').innerHTML=`<p>${appliance_list.Stoves_num}</p>`,
+                document.querySelector('.Fridges_num').innerHTML=`<p>${appliance_list.Fridges_num}</p>`,
+                document.querySelector('.Kettles_num').innerHTML=`<p>${appliance_list.Kettles_num}</p>`,
+                document.querySelector('.Microwaves_num').innerHTML=`<p>${appliance_list.Microwaves_num}</p>`,
+                document.querySelector('.Computers_num').innerHTML=`<p>${appliance_list.Computers_num}</p>`,
+                document.querySelector('.Printers_num').innerHTML=`<p>${appliance_list.Printers_num}</p>`,
+                document.querySelector('.Modems_num').innerHTML=`<p>${appliance_list. Modems_num}</p>`,
+                document.querySelector('.ElectricBlankets_num').innerHTML=`<p>${appliance_list.ElectricBlankets_num}</p>`,
+                document.querySelector('.Phones_num').innerHTML=`<p>${appliance_list.Phones_num}</p>`
+                }
+
+            })
+        
+
+ 
+    
+})
+
+
 
         // appliance_view_form(
         //     document.querySelector('form').onsubmit = function(){
@@ -401,9 +512,33 @@ appliance_view_form(
 
 function appliance_view_form(){
     //showing the appliances entry form
+
+
+    document.querySelector('#TVs_num').value=''
+    document.querySelector('#Decoders_num').value=''
+    document.querySelector('#SoundSystems_num').value=''
+    document.querySelector('#Lights_num').value=''
+    document.querySelector('#Heaters_num').value=''
+    document.querySelector('#Stoves_num').value=''
+    document.querySelector('#Fridges_num').value=''
+    document.querySelector('#Kettles_num').value=''
+    document.querySelector('#Microwaves_num').value=''
+    document.querySelector('#Computers_num').value=''
+    document.querySelector('#Printers_num').value=''
+    document.querySelector('#Modems_num').value=''
+    document.querySelector('#ElectricBlankets_num').value=''
+    document.querySelector('#Phones_num').value=''
+
+
+
+
+
+
     document.querySelector('#appliance_view_form').style.display = 'block';
     document.querySelector('#appliance_view_list').style.display = 'none';
     document.querySelector('#home_view').style.display = 'none';
+    document.querySelector('#results_view').style.display = 'none'
+    document.querySelector('#redirection_view').style.display = 'none'
 }
 
 function appliance_view_list(){
@@ -411,6 +546,8 @@ function appliance_view_list(){
     document.querySelector('#appliance_view_form').style.display = 'none';
     document.querySelector('#appliance_view_list').style.display = 'block';
     document.querySelector('#home_view').style.display = 'none';
+    document.querySelector('#results_view').style.display = 'none'
+    document.querySelector('#redirection_view').style.display = 'none'
 }
 
 function home_view(){
@@ -418,4 +555,29 @@ function home_view(){
     document.querySelector('#appliance_view_form').style.display = 'none';
     document.querySelector('#appliance_view_list').style.display = 'none';
     document.querySelector('#home_view').style.display = 'block';
+    document.querySelector('#results_view').style.display = 'none'
+    document.querySelector('#redirection_view').style.display = 'none'
+}
+
+function result_view(){
+        //showing the appliances energy demand results
+        document.querySelector('#appliance_view_form').style.display = 'none';
+        document.querySelector('#appliance_view_list').style.display = 'none';
+        document.querySelector('#home_view').style.display = 'none';
+        document.querySelector('#results_view').style.display = 'block'
+        document.querySelector('#redirection_view').style.display = 'none'
+        document.querySelector('#result').innerHTML=''
+}
+
+function redirect_view(){
+
+            //showing the redirection view for appliance form
+            document.querySelector('#appliance_view_form').style.display = 'none';
+            document.querySelector('#appliance_view_list').style.display = 'none';
+            document.querySelector('#home_view').style.display = 'none';
+            document.querySelector('#results_view').style.display = 'none'
+            document.querySelector('#redirection_view').style.display = 'block'
+
+            document.querySelector('#redirection_view').innerHTML=''
+
 }

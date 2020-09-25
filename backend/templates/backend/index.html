@@ -75,9 +75,13 @@
             </form>
             <button id="calculate" class="btn btn-primary">Calculate</button>
         </div>
+    </div>
+
+    <div id="results_view">
         <div id="result">
         </div>
     </div>
+
     <div id="appliance_view_list">
         <div id="appliance_list">
             <div class="TVs_num_sec">
@@ -179,6 +183,8 @@
             </div>
             <br>
         </div>
+    </div>
+    <div id ="redirection_view">
     </div>
     <div id="user_id">{{ request.user.id|json_script:"user_id" }}</div>
 {% endblock %}
