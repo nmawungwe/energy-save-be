@@ -4,6 +4,9 @@
 
 
 {% block body %}
+<!-- <div id="testing_view">
+    <button id="testing" onclick="appliance_list_check()">Testing</button>
+</div> -->
     <div id="appliance_view_form">
         <div id="home_view">
             <button id="check">Check</button>
@@ -78,6 +81,7 @@
     </div>
 
     <div id="results_view">
+        <div id="result_msg"></div>
         <div id="result">
         </div>
     </div>
@@ -185,6 +189,10 @@
         </div>
     </div>
     <div id ="redirection_view">
+    </div>
+    <div id = "update_view">
+        <div id="update_msg"></div>
+        <div id="update"></div>
     </div>
     <div id="user_id">{{ request.user.id|json_script:"user_id" }}</div>
 {% endblock %}

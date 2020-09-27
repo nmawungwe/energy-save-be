@@ -191,8 +191,7 @@ energy_calculation = ()=>{
                                     appliance_view_form()
                                 })
                                 document.querySelector('.btn_save').addEventListener('click', ()=>{
-                                    save_appliance_list()
-                                    appliance_view_form()
+                                    appliance_list_check()
                                 })                               
 
                         } else if (4.65 <= total_usage && total_usage <= 7.75 ) {
@@ -214,8 +213,7 @@ energy_calculation = ()=>{
                                 appliance_view_form()
                             })
                             document.querySelector('.btn_save').addEventListener('click', ()=>{
-                                save_appliance_list()
-                                appliance_view_form()
+                                appliance_list_check()
                             })
                         } else {
                             //suck their nuts
@@ -236,12 +234,27 @@ energy_calculation = ()=>{
                                 appliance_view_form()   
                             })
                             document.querySelector('.btn_save').addEventListener('click', ()=>{
-                                save_appliance_list()
-                                appliance_view_form()
+                                appliance_list_check()
                             })
                         }
-        
 
+    // appliance_list_check = ()=> {
+  
+    //     const user_id = JSON.parse(document.getElementById('user_id').textContent)
+            
+    //     fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
+    //         console.log(appliance_list)
+        
+    //     if (user_id === appliance_list.user_id) {
+    //         console.log('User exists, you should suggest if they want to update they appliance list')
+    //         }
+    //     else{
+    //         console.log('User can save their appliance list')
+    //     }
+
+
+    // })}
+        
     save_appliance_list = ()=> {
         let request = new Request(
             '/appliances',
@@ -269,10 +282,78 @@ energy_calculation = ()=>{
             console.log(result)
         })
         return false;
-
     }
+
+
+    appliance_list_check = ()=> {
+        const user_id = JSON.parse(document.getElementById('user_id').textContent)
+            
+        fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
+            // console.log(appliance_list)
+        
+        if (user_id === appliance_list.user_id) {
+            update_view()
+            let result_msg = document.createElement("P")
+            result_msg.innerText = `You have a saved appliance list do you want to update it?`
+            document.querySelector('#update_msg').appendChild(result_msg)
+            let btn_update = document.createElement("BUTTON")
+            // btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+            // btn_recalculate.innerHTML = `Do you want to recalculate consumption?`
+            // document.querySelector('#result').appendChild(btn_recalculate)
+            btn_update.setAttribute("class","btn btn-primary btn_update" )
+            btn_update.setAttribute('onclick', 'appliance_update_list()')
+            btn_update.innerHTML = `Yes`
+            document.querySelector('#update').appendChild(btn_update)
+            let btn_cancel = document.createElement("BUTTON")
+            btn_cancel.setAttribute('class','btn btn-danger btn_cancel')
+            btn_cancel.setAttribute('onclick','appliance_view_form()')
+            btn_cancel.innerHTML = `No`
+            document.querySelector('#update').appendChild(btn_cancel)
+            }
+        else {
+            update_view()
+            save_appliance_list()
+        }
+    
+    })}
+
+    
+    appliance_update_list = ()=> {
+        let request = new Request(
+            '/appliances',
+            {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'PUT',
+            body: JSON.stringify({
+                TVs_num: TVs_num,
+                Decoders_num: Decoders_num,
+                SoundSystems_num: SoundSystems_num,
+                Lights_num: Lights_num,
+                Heaters_num: Heaters_num,
+                Stoves_num : Stoves_num,
+                Fridges_num: Fridges_num,
+                Kettles_num: Kettles_num,
+                Microwaves_num: Microwaves_num,
+                Computers_num: Computers_num,
+                Printers_num: Printers_num,
+                Modems_num: Modems_num,
+                ElectricBlankets_num: ElectricBlankets_num,
+                Phones_num: Phones_num
+            })
+        }).then(response => response.json()).then(result=>{
+            console.log(result)
+            return false;
+        })
+        appliance_view_form() 
+    }
+      
 }
 
+
+
+
+ 
 document.querySelector('#appliance_list').addEventListener('click', ()=>{
 
                fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
@@ -539,6 +620,8 @@ function appliance_view_form(){
     document.querySelector('#home_view').style.display = 'none';
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
+    document.querySelector('#update_view').style.display = 'none'
+    
 }
 
 function appliance_view_list(){
@@ -548,6 +631,7 @@ function appliance_view_list(){
     document.querySelector('#home_view').style.display = 'none';
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
+    document.querySelector('#update_view').style.display = 'none'
 }
 
 function home_view(){
@@ -557,6 +641,7 @@ function home_view(){
     document.querySelector('#home_view').style.display = 'block';
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
+    document.querySelector('#update_view').style.display = 'none'
 }
 
 function result_view(){
@@ -566,6 +651,7 @@ function result_view(){
         document.querySelector('#home_view').style.display = 'none';
         document.querySelector('#results_view').style.display = 'block'
         document.querySelector('#redirection_view').style.display = 'none'
+        document.querySelector('#update_view').style.display = 'none'
         document.querySelector('#result').innerHTML=''
 }
 
@@ -577,7 +663,23 @@ function redirect_view(){
             document.querySelector('#home_view').style.display = 'none';
             document.querySelector('#results_view').style.display = 'none'
             document.querySelector('#redirection_view').style.display = 'block'
+            document.querySelector('#update_view').style.display = 'none'
 
             document.querySelector('#redirection_view').innerHTML=''
+
+}
+
+function update_view(){
+
+    //showing the redirection view for appliance form
+    document.querySelector('#appliance_view_form').style.display = 'none';
+    document.querySelector('#appliance_view_list').style.display = 'none';
+    document.querySelector('#home_view').style.display = 'none';
+    document.querySelector('#results_view').style.display = 'none'
+    document.querySelector('#redirection_view').style.display = 'none'
+    document.querySelector('#update_view').style.display = 'block'
+
+    document.querySelector('#update_msg').innerHTML=''
+    document.querySelector('#update').innerHTML=''
 
 }
