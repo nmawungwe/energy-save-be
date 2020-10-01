@@ -401,31 +401,55 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
 
                 if (total_usage > 7.75) {
                     let load_msg = document.createElement("P")
-                    load_msg.innerText = `Current electricity load`
+                    load_msg.innerText = `Above average consumption`
                     let btn_load = document.createElement("BUTTON")
                     btn_load.setAttribute("class", "btn btn-danger")
-                    btn_load.innerHTML = `${total_usage} kWh`
+                    btn_load.innerHTML = `${total_usage} kWh/d`
                     document.querySelector('#current_load').appendChild(load_msg)
                     document.querySelector('#current_load').appendChild(btn_load)
                 } else if (4.65 <= total_usage && total_usage <= 7.75) {
                     let load_msg = document.createElement("P")
-                    load_msg.innerText = `Current electricity load`
+                    load_msg.innerText = `Average consumption`
                     let btn_load = document.createElement("BUTTON")
                     btn_load.setAttribute("class", "btn btn-warning")
-                    btn_load.innerHTML = `${total_usage} kWh`
+                    btn_load.innerHTML = `${total_usage} kWh/d`
                     document.querySelector('#current_load').appendChild(load_msg)
                     document.querySelector('#current_load').appendChild(btn_load)
                 } else {
                     let load_msg = document.createElement("P")
-                    load_msg.innerText = `Current electricity load`
+                    load_msg.innerText = `Below average consumption`
                     let btn_load = document.createElement("BUTTON")
                     btn_load.setAttribute("class", "btn btn-success")
-                    btn_load.innerHTML = `${total_usage} kWh`
+                    btn_load.innerHTML = `${total_usage} kWh/d`
                     document.querySelector('#current_load').appendChild(load_msg)
                     document.querySelector('#current_load').appendChild(btn_load)
                 }
 
+                let btn_edit = document.createElement("BUTTON")
+                btn_edit.setAttribute("class","btn btn-info btn_edit")
+                btn_edit.innerHTML = `Edit`
+                document.querySelector('#edit_load').appendChild(btn_edit)
 
+                document.querySelector('.btn_edit').addEventListener('click', ()=>{
+
+                    appliance_view_form()
+                    document.querySelector('#TVs_num').value=`${appliance_list.TVs_num}`
+                    document.querySelector('#Decoders_num').value=`${appliance_list.Decoders_num}`
+                    document.querySelector('#SoundSystems_num').value=`${appliance_list.SoundSystems_num}`
+                    document.querySelector('#Lights_num').value=`${appliance_list.Lights_num}`
+                    document.querySelector('#Heaters_num').value=`${appliance_list.Heaters_num}`
+                    document.querySelector('#Stoves_num').value=`${appliance_list.Stoves_num}`
+                    document.querySelector('#Fridges_num').value=`${appliance_list.Fridges_num}`
+                    document.querySelector('#Kettles_num').value=`${appliance_list.Kettles_num}`
+                    document.querySelector('#Microwaves_num').value=`${appliance_list.Microwaves_num}`
+                    document.querySelector('#Computers_num').value=`${appliance_list.Computers_num}`
+                    document.querySelector('#Printers_num').value=`${appliance_list.Printers_num}`
+                    document.querySelector('#Modems_num').value=`${appliance_list.Modems_num}`
+                    document.querySelector('#ElectricBlankets_num').value=`${appliance_list.ElectricBlankets_num}`
+                    document.querySelector('#Phones_num').value=`${appliance_list.Phones_num}`
+
+
+                })
 
                 document.querySelector('.TVs_num').innerHTML=`<p>${appliance_list.TVs_num}</p>`,
                 document.querySelector('.Decoders_num').innerHTML=`<p>${appliance_list.Decoders_num}</p>`,
@@ -692,6 +716,9 @@ function appliance_view_list(){
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
     document.querySelector('#current_load').innerHTML=''
+    document.querySelector('#edit_load').innerHTML=''
+
+    
 
 }
 
