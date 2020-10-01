@@ -37,7 +37,7 @@ class Appliance_list(models.Model):
             'Microwaves_num':self.Microwaves_num,
             'Computers_num':self.Computers_num,
             'Printers_num':self.Printers_num,
-            'Modems_num ':self.Modems_num ,
+            'Modems_num':self.Modems_num ,
             'ElectricBlankets_num':self.ElectricBlankets_num,
             'Phones_num':self.Phones_num
         }

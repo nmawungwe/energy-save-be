@@ -194,7 +194,7 @@ energy_calculation = ()=>{
                                     appliance_list_check()
                                 })                               
 
-                        } else if (4.65 <= total_usage && total_usage <= 7.75 ) {
+                        } else if (4.65 <= total_usage && total_usage <= 7.75) {
                             // tell them something nice
                             result_view()
                             let btn_recalculate = document.createElement("BUTTON")
@@ -368,6 +368,65 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                     })
                 } else {
                 appliance_view_list()
+                // usage values in kWh per day
+                console.log(appliance_list)
+                let TV_usage = 0.72
+                let Decoder_usage = 0.72
+                let Sound_system = 0.6
+                let Light = 0.16
+                let Heater = 0.026
+                let Stove = 2
+                let Fridge = 9.6
+                let Kettle = 0.333
+                let Microwave = 0.257
+                let Computer = 0.24
+                let Printer = 0.005
+                let Modem = 0.288
+                let Electric_blanket = 0.015
+                let Phone = 0.12
+                 //per day
+                total_usage = (appliance_list.TVs_num*TV_usage)+(appliance_list.Decoders_num*Decoder_usage)
+                +(appliance_list.SoundSystems_num*Sound_system)
+                +(appliance_list.Lights_num*Light)
+                +(appliance_list.Heaters_num*Heater)
+                +(appliance_list.Stoves_num*Stove)
+                +(appliance_list.Fridges_num*Fridge)
+                +(appliance_list.Kettles_num*Kettle)
+                +(appliance_list.Microwaves_num*Microwave)
+                +(appliance_list.Computers_num*Computer)
+                +(appliance_list.Printers_num*Printer)
+                +(appliance_list.Modems_num*Modem)
+                +(appliance_list.ElectricBlankets_num*Electric_blanket)+(appliance_list.Phones_num*Phone)
+                console.log(total_usage)
+
+                if (total_usage > 7.75) {
+                    let load_msg = document.createElement("P")
+                    load_msg.innerText = `Current electricity load`
+                    let btn_load = document.createElement("BUTTON")
+                    btn_load.setAttribute("class", "btn btn-danger")
+                    btn_load.innerHTML = `${total_usage} kWh`
+                    document.querySelector('#current_load').appendChild(load_msg)
+                    document.querySelector('#current_load').appendChild(btn_load)
+                } else if (4.65 <= total_usage && total_usage <= 7.75) {
+                    let load_msg = document.createElement("P")
+                    load_msg.innerText = `Current electricity load`
+                    let btn_load = document.createElement("BUTTON")
+                    btn_load.setAttribute("class", "btn btn-warning")
+                    btn_load.innerHTML = `${total_usage} kWh`
+                    document.querySelector('#current_load').appendChild(load_msg)
+                    document.querySelector('#current_load').appendChild(btn_load)
+                } else {
+                    let load_msg = document.createElement("P")
+                    load_msg.innerText = `Current electricity load`
+                    let btn_load = document.createElement("BUTTON")
+                    btn_load.setAttribute("class", "btn btn-success")
+                    btn_load.innerHTML = `${total_usage} kWh`
+                    document.querySelector('#current_load').appendChild(load_msg)
+                    document.querySelector('#current_load').appendChild(btn_load)
+                }
+
+
+
                 document.querySelector('.TVs_num').innerHTML=`<p>${appliance_list.TVs_num}</p>`,
                 document.querySelector('.Decoders_num').innerHTML=`<p>${appliance_list.Decoders_num}</p>`,
                 document.querySelector('.SoundSystems_num').innerHTML=`<p>${appliance_list.SoundSystems_num}</p>`,
@@ -632,6 +691,8 @@ function appliance_view_list(){
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
+    document.querySelector('#current_load').innerHTML=''
+
 }
 
 function home_view(){
