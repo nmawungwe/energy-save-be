@@ -263,75 +263,75 @@
 
                 <div class="col-2">
 
-                    <div class="list-group" role="tablist">
+                    <ul class="list-group">
 
-                        <a class="list-group-item list-group-item-action">
-                            <div class="TVs_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            TVs number<span class="badge badge-primary badge-pill TVs_num"></span>
+                        </li>
         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Decoders_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Decoders number<span class="badge badge-primary badge-pill Decoders_num"></span>
+                        </li>
         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="SoundSystems_num"></div>
-                        </a>
-        
-                        
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Lights_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            SoundSystems number<span class="badge badge-primary badge-pill SoundSystems_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Heaters_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Lights number<span class="badge badge-primary badge-pill Lights_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Stoves_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Heaters number<span class="badge badge-primary badge-pill Heaters_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Fridges_num"></div>
-                        </a>
-        
-        
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Kettles_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Stoves number<span class="badge badge-primary badge-pill Stoves_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Microwaves_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Fridges number<span class="badge badge-primary badge-pill Fridges_num"></span>
+                        </li>
+        
+        
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Kettles number<span class="badge badge-primary badge-pill Kettles_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Computers_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Microwaves number<span class="badge badge-primary badge-pill Microwaves_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Printers_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Computers number<span class="badge badge-primary badge-pill Computers_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Modems_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Printers number<span class="badge badge-primary badge-pill Printers_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="ElectricBlankets_num"></div>
-                        </a>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Modems number<span class="badge badge-primary badge-pill Modems_num"></span>
+                        </li>
         
                         
-                        <a class="list-group-item list-group-item-action">
-                            <div class="Phones_num"></div>
-                        </a>
-                    </div>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Electric Blankets number<span class="badge badge-primary badge-pill ElectricBlankets_num"></span>
+                        </li>
+        
+                        
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Phones number<span class="badge badge-primary badge-pill Phones_num"></span>
+                        </li>
+                    </ul>
 
                 </div>
 
@@ -347,12 +347,34 @@
 
         </div>
     </div>
+
+
     <div id ="redirection_view">
     </div>
+
+
+
     <div id = "update_view">
         <div id="update_msg"></div>
         <div id="update"></div>
     </div>
+
+
+
+    <div id="statistics_view">
+        <div id="user_status">
+        </div>
+        <br>
+        <div class="container">
+            <div id="avg_graph">
+                <iframe id="eia_widget" style="width:100%;height:500px" src="//www.eia.gov/opendata/embed/iframe.php?series_id=STEO.EXRCH_US.M" load="iframe_load"></iframe>
+            </div>
+
+        </div>
+  
+    </div>
+
+
     <div id="user_id">{{ request.user.id|json_script:"user_id" }}</div>
 {% endblock %}
 

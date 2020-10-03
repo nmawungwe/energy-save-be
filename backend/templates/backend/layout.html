@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'backend/style.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     {% block script %}
     {% endblock %}
     <title>{% block title %}Energy Save{% endblock %}</title>
@@ -28,6 +30,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-item" href="#" id="appliance_list">Appliance List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item" href="#" id="statistics">Statistics</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Logout</a>

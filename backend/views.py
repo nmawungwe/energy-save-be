@@ -7,6 +7,8 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.core.serializers import serialize
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Sum
+
 
 from .models import User, Appliance_list
 
@@ -120,4 +122,24 @@ def appliances(request):
             appliances_list.Phones_num=Phones_num
             appliances_list.save()
             return JsonResponse({"message":"Appliance list has been updated"}, status=201)
+
+def appliance_chart(request):
+
+    labels = []
+    data = []
+
+    queryset = Appliance_list.objects.values('user__username').annotate(user_appliance_list = Sum ('TVs_num')).order_by('-user_TVs_num')
+    for entry in queryset:
+        labels.append(entry['user__username'])
+        data.append(entry['user_TVs_num'])
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data
+    })
+
+
+
+
+
 
