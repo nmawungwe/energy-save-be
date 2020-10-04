@@ -48,66 +48,76 @@ energy_calculation = ()=>{
  
             if (total_usage > 7.75*30) {
                             //scare the shit out of them
-                            result_view()
-                                let btn_recalculate = document.createElement("BUTTON")
-                                btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
-                                btn_recalculate.innerHTML = `Recalculate`
-                                document.querySelector('#result').appendChild(btn_recalculate)
-                                let btn_notification = document.createElement("BUTTON")
-                                btn_notification.setAttribute("class", "btn btn-danger")
-                                btn_notification.innerHTML = `You are above average consumption: ${total_usage} kWh`
-                                document.querySelector('#result').appendChild(btn_notification) 
-                                let btn_save = document.createElement("BUTTON")
-                                btn_save.setAttribute('class','btn btn-info btn_save')
-                                btn_save.innerHTML =`Save appliance list`
-                                document.querySelector('#result').appendChild(btn_save)
-                                document.querySelector('.btn_recalc').addEventListener('click', ()=>{
-                                    appliance_view_form()
-                                })
-                                document.querySelector('.btn_save').addEventListener('click', ()=>{
+                                // let btn_recalculate = document.createElement("BUTTON")
+                                // btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+                                // btn_recalculate.innerHTML = `Recalculate`
+                                // document.querySelector('#result').appendChild(btn_recalculate)
+                                // document.querySelector('.model').innerHTML=''
+                                // let consumption_notification = document.createElement("P")
+                                // btn_notification.setAttribute("class", "btn btn-danger")
+                                // consumption_notification.innerText = `Above average consumption: ${total_usage} kWh/month`
+                                // btn_notification.innerHTML = `You are above average consumption: ${total_usage} kWh`
+                                document.querySelector('.message').innerHTML=''
+
+                                document.querySelector('.message').innerHTML=`<p>Above average consumption: ${total_usage} kWh/month</p>`
+                                // let btn_save = document.createElement("BUTTON")
+                                // btn_save.setAttribute('class','btn btn-info btn_save')
+                                // btn_save.innerHTML =`Save appliance list`
+                                // document.querySelector('#result').appendChild(btn_save)
+                                // document.querySelector('.btn_recalc').addEventListener('click', ()=>{
+                                //     appliance_view_form()
+                                // })
+                                document.querySelector('#save').addEventListener('click', ()=>{
                                     appliance_list_check()
                                 })                               
 
                         } else if (4.65*30 <= total_usage && total_usage <= 7.75*30) {
                             // tell them something nice
-                            result_view()
-                            let btn_recalculate = document.createElement("BUTTON")
-                            btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
-                            btn_recalculate.innerHTML = `Recalculate`
-                            document.querySelector('#result').appendChild(btn_recalculate)
-                            let btn_notification = document.createElement("BUTTON")
-                            btn_notification.setAttribute("class", "btn btn-warning")
-                            btn_notification.innerHTML = `You are average consumption: ${total_usage} kWh`
-                            document.querySelector('#result').appendChild(btn_notification)
-                            let btn_save = document.createElement("BUTTON")
-                            btn_save.setAttribute('class','btn btn-info btn_save')
-                            btn_save.innerHTML =`Save appliance list`
-                            document.querySelector('#result').appendChild(btn_save)
-                            document.querySelector('.btn_recalc').addEventListener('click', ()=>{
-                                appliance_view_form()
-                            })
-                            document.querySelector('.btn_save').addEventListener('click', ()=>{
+                            // result_view()
+                            // let btn_recalculate = document.createElement("BUTTON")
+                            // btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+                            // btn_recalculate.innerHTML = `Recalculate`
+                            // document.querySelector('#result').appendChild(btn_recalculate)
+                            // document.querySelector('.model').innerHTML=''
+                            // let consumption_notification = document.createElement("P")
+                            // btn_notification.setAttribute("class", "btn btn-warning")
+                            document.querySelector('.message').innerHTML=''
+
+                            document.querySelector('.message').innerHTML=`<p>Average consumption: ${total_usage} kWh/month</p>`
+                            // document.querySelector('.modal-body').appendChild(consumption_notification) 
+                            // let btn_save = document.createElement("BUTTON")
+                            // btn_save.setAttribute('class','btn btn-info btn_save')
+                            // btn_save.innerHTML =`Save appliance list`
+                            // document.querySelector('#result').appendChild(btn_save)
+                            // document.querySelector('.btn_recalc').addEventListener('click', ()=>{
+                            //     appliance_view_form()
+                            // })
+                            document.querySelector('#save').addEventListener('click', ()=>{
                                 appliance_list_check()
                             })
                         } else {
                             //suck their nuts
-                            result_view()
-                            let btn_recalculate = document.createElement("BUTTON")
-                            btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
-                            btn_recalculate.innerHTML = `Recalculate`
-                            document.querySelector('#result').appendChild(btn_recalculate)
-                            let btn_notification = document.createElement("BUTTON")
-                            btn_notification.setAttribute("class", "btn btn-success")
-                            btn_notification.innerHTML = `You are below average consumption: ${total_usage}kWh`
-                            document.querySelector('#result').appendChild(btn_notification)
-                            let btn_save =document.createElement("BUTTON")
-                            btn_save.setAttribute("class", "btn btn-info btn_save")
-                            btn_save.innerHTML = `Save appliance list`
-                            document.querySelector('#result').appendChild(btn_save)
-                            document.querySelector('.btn_recalc').addEventListener('click', ()=>{
-                                appliance_view_form()   
-                            })
-                            document.querySelector('.btn_save').addEventListener('click', ()=>{
+                            // result_view()
+                            // let btn_recalculate = document.createElement("BUTTON")
+                            // btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+                            // btn_recalculate.innerHTML = `Recalculate`
+                            // document.querySelector('#result').appendChild(btn_recalculate)
+                            // document.querySelector('.model').innerHTML=''
+                            // let consumption_notification = document.createElement("P")
+                            // btn_notification.setAttribute("class", "btn btn-success")
+                            document.querySelector('.message').innerHTML=''
+
+                            document.querySelector('.message').innerHTML=`<p>Below average consumption: ${total_usage} kWh/month</p>`
+                            // consumption_notification.innerText = `Below average consumption: ${total_usage} kWh/month`
+                            // document.querySelector('.modal-body').appendChild(consumption_notification) 
+                            // let btn_save =document.createElement("BUTTON")
+                            // btn_save.setAttribute("class", "btn btn-info btn_save")
+                            // btn_save.innerHTML = `Save appliance list`
+                            // document.querySelector('#result').appendChild(btn_save)
+                            // document.querySelector('.btn_recalc').addEventListener('click', ()=>{
+                            //     appliance_view_form()   
+                            // })
+                            document.querySelector('#save').addEventListener('click', ()=>{
                                 appliance_list_check()
                             })
                         }
@@ -144,33 +154,38 @@ energy_calculation = ()=>{
 
 
     appliance_list_check = ()=> {
+        appliance_view_form()
         const user_id = JSON.parse(document.getElementById('user_id').textContent)
             
         fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
             // console.log(appliance_list)
         
         if (user_id === appliance_list.user_id) {
-            update_view()
-            let result_msg = document.createElement("P")
-            result_msg.innerText = `You have a saved appliance list do you want to update it?`
-            document.querySelector('#update_msg').appendChild(result_msg)
-            let btn_update = document.createElement("BUTTON")
-            // btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
-            // btn_recalculate.innerHTML = `Do you want to recalculate consumption?`
-            // document.querySelector('#result').appendChild(btn_recalculate)
-            btn_update.setAttribute("class","btn btn-primary btn_update" )
-            btn_update.setAttribute('onclick', 'appliance_update_list()')
-            btn_update.innerHTML = `Yes`
-            document.querySelector('#update').appendChild(btn_update)
-            let btn_cancel = document.createElement("BUTTON")
-            btn_cancel.setAttribute('class','btn btn-danger btn_cancel')
-            btn_cancel.setAttribute('onclick','appliance_view_form()')
-            btn_cancel.innerHTML = `No`
-            document.querySelector('#update').appendChild(btn_cancel)
+            // document.querySelector('.modal').style.display = 'none'
+
+            console.log("WADII")
+            // let result_msg = document.createElement("P")
+            // result_msg.innerText = `You have a saved appliance list do you want to update it?`
+            // document.querySelector('#update_msg').appendChild(result_msg)
+            // let btn_update = document.createElement("BUTTON")
+            // // btn_recalculate.setAttribute("class", "btn btn-light btn_recalc")
+            // // btn_recalculate.innerHTML = `Do you want to recalculate consumption?`
+            // // document.querySelector('#result').appendChild(btn_recalculate)
+            // btn_update.setAttribute("class","btn btn-primary btn_update" )
+            // btn_update.setAttribute('onclick', 'appliance_update_list()')
+            // btn_update.innerHTML = `Yes`
+            // document.querySelector('#update').appendChild(btn_update)
+            // let btn_cancel = document.createElement("BUTTON")
+            // btn_cancel.setAttribute('class','btn btn-danger btn_cancel')
+            // btn_cancel.setAttribute('onclick','appliance_view_form()')
+            // btn_cancel.innerHTML = `No`
+            // document.querySelector('#update').appendChild(btn_cancel)
             }
         else {
-            update_view()
-            save_appliance_list()
+            // document.querySelector('.modal').style.display = 'none'
+            console.log("WADII")
+            // update_view()
+            // save_appliance_list()
         }
     
     })}
@@ -387,6 +402,12 @@ document.querySelector('#statistics').addEventListener('click', ()=>{
 
 })
 
+// document.querySelector('#toggle').addEventListener('click',()=>{
+//     let toggle_msg = document.createElement("P")
+//     toggle_msg.innerText=`Twabam`
+//     document.querySelector(".modal-body").appendChild(toggle_msg)
+// })
+
 
 appliance_view_form(
     document.querySelector('#calculate').addEventListener('click', ()=>{
@@ -427,6 +448,7 @@ function appliance_view_form(){
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
     document.querySelector('#statistics_view').style.display = 'none';
+
     
 }
 
