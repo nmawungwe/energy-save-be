@@ -154,6 +154,7 @@ energy_calculation = ()=>{
 
 
     appliance_list_check = ()=> {
+
         appliance_view_form()
         const user_id = JSON.parse(document.getElementById('user_id').textContent)
             
@@ -161,9 +162,13 @@ energy_calculation = ()=>{
             // console.log(appliance_list)
         
         if (user_id === appliance_list.user_id) {
-            // document.querySelector('.modal').style.display = 'none'
-
-            console.log("WADII")
+            // console.log("WADII")
+            document.querySelector('#alert').innerHTML=`  <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action
+            <div><button>Waddi</button></div>.
+          </div>
+          `
             // let result_msg = document.createElement("P")
             // result_msg.innerText = `You have a saved appliance list do you want to update it?`
             // document.querySelector('#update_msg').appendChild(result_msg)
@@ -182,9 +187,8 @@ energy_calculation = ()=>{
             // document.querySelector('#update').appendChild(btn_cancel)
             }
         else {
-            // document.querySelector('.modal').style.display = 'none'
             console.log("WADII")
-            // update_view()
+            update_view()
             // save_appliance_list()
         }
     
@@ -443,7 +447,7 @@ function appliance_view_form(){
 
     document.querySelector('#appliance_view_form').style.display = 'block';
     document.querySelector('#appliance_view_list').style.display = 'none';
-    document.querySelector('#home_view').style.display = 'none';
+    // document.querySelector('#home_view').style.display = 'none';
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
@@ -456,7 +460,7 @@ function appliance_view_list(){
     //showing the appliances list view 
     document.querySelector('#appliance_view_form').style.display = 'none';
     document.querySelector('#appliance_view_list').style.display = 'block';
-    document.querySelector('#home_view').style.display = 'none';
+    // document.querySelector('#home_view').style.display = 'none';
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
@@ -485,7 +489,7 @@ function home_view(){
     //showing the appliances entry form
     document.querySelector('#appliance_view_form').style.display = 'none';
     document.querySelector('#appliance_view_list').style.display = 'none';
-    document.querySelector('#home_view').style.display = 'block';
+    // document.querySelector('#home_view').style.display = 'block';
     document.querySelector('#results_view').style.display = 'none'
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
@@ -496,7 +500,7 @@ function result_view(){
         //showing the appliances energy demand results
         document.querySelector('#appliance_view_form').style.display = 'none';
         document.querySelector('#appliance_view_list').style.display = 'none';
-        document.querySelector('#home_view').style.display = 'none';
+        // document.querySelector('#home_view').style.display = 'none';
         document.querySelector('#results_view').style.display = 'block'
         document.querySelector('#redirection_view').style.display = 'none'
         document.querySelector('#update_view').style.display = 'none'
@@ -510,7 +514,7 @@ function redirect_view(){
             //showing the redirection view for appliance form
             document.querySelector('#appliance_view_form').style.display = 'none';
             document.querySelector('#appliance_view_list').style.display = 'none';
-            document.querySelector('#home_view').style.display = 'none';
+            // document.querySelector('#home_view').style.display = 'none';
             document.querySelector('#results_view').style.display = 'none'
             document.querySelector('#redirection_view').style.display = 'block'
             document.querySelector('#update_view').style.display = 'none'
@@ -525,14 +529,13 @@ function update_view(){
     //showing the redirection view for appliance form
     document.querySelector('#appliance_view_form').style.display = 'none';
     document.querySelector('#appliance_view_list').style.display = 'none';
-    document.querySelector('#home_view').style.display = 'none';
+    // document.querySelector('#home_view').style.display = 'none';
     document.querySelector('#results_view').style.display = 'none';
     document.querySelector('#redirection_view').style.display = 'none';
     document.querySelector('#update_view').style.display = 'block';
     document.querySelector('#statistics_view').style.display = 'none';
 
-    document.querySelector('#update_msg').innerHTML=''
-    document.querySelector('#update').innerHTML=''
+
 
 }
 
@@ -541,7 +544,7 @@ function statistics_view(){
         //showing the redirection view for appliance form
         document.querySelector('#appliance_view_form').style.display = 'none';
         document.querySelector('#appliance_view_list').style.display = 'none';
-        document.querySelector('#home_view').style.display = 'none';
+        // document.querySelector('#home_view').style.display = 'none';
         document.querySelector('#results_view').style.display = 'none'
         document.querySelector('#redirection_view').style.display = 'none'
         document.querySelector('#update_view').style.display = 'none'
@@ -552,3 +555,4 @@ function statistics_view(){
 
 
 }
+

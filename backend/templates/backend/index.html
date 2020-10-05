@@ -9,11 +9,8 @@
 </div> -->
 <div class="container">
 
-
-
     <div id="appliance_view_form">
-        <div id="home_view">
-            <button id="check">Check</button>
+        <div id="alert">
         </div>
         <div id="appliance_form">
             <form action="" id="appliances_form" class="form-group">
@@ -229,15 +226,15 @@
 
 
             <div id ='model-view'>            <!-- Button trigger modal -->
-                <button type="button" id="calculate" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" id="calculate" class="btn btn-primary" data-toggle="modal" data-target="#save_list_modal">
                     Calculate
                 </button>
                 <!-- Modal -->
-                <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal" id="save_list_modal" tabindex="-1" role="dialog" aria-labelledby="save_modal_label" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Energy consumption</h5>
+                        <h5 class="modal-title" id="save_modal_label">Energy consumption</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -247,7 +244,7 @@
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" id="save" class="btn btn-primary">Save changes</button>
+                        <button type="button" id="save" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                     </div>
@@ -388,8 +385,10 @@
 
 
     <div id = "update_view">
-        <div id="update_msg"></div>
-        <div id="update"></div>
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> This alert box could indicate a successful or positive action.
+          </div>
     </div>
 
 
