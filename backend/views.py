@@ -67,11 +67,12 @@ def appliances(request):
             appliances_list = Appliance_list.objects.get(user=request.user.id)
         except Appliance_list.DoesNotExist:
             return JsonResponse({"Message":"Appliance list doesn't exist"}, status=404)
+
         if request.method == "GET":
             appliances_list = json.dumps(appliances_list.serialize())
             appliances_list = json.loads(appliances_list)
             return JsonResponse(appliances_list, safe=False, status=200)
-        elif request.method =='POST':
+        elif request.method == "POST":
             data = json.loads(request.body)
             TVs_num = data.get("TVs_num")
             Decoders_num = data.get("Decoders_num")
@@ -90,6 +91,9 @@ def appliances(request):
             addition = Appliance_list(user=request.user, TVs_num=TVs_num, Decoders_num=Decoders_num, SoundSystems_num=SoundSystems_num, Lights_num=Lights_num , Heaters_num=Heaters_num, Stoves_num=Stoves_num, Fridges_num=Fridges_num, Kettles_num=Kettles_num, Microwaves_num=Microwaves_num, Computers_num=Computers_num, Printers_num=Printers_num, Modems_num=Modems_num, ElectricBlankets_num=ElectricBlankets_num, Phones_num=Phones_num)
             addition.save()
             return JsonResponse({"message":"Addition of appliances was successful"}, status=201)
+        elif request.method =='DELETE':
+            appliances_list.delete()
+            return JsonResponse({"message":"appliance list deleted"})
         else:
             data = json.loads(request.body)
             TVs_num = data.get("TVs_num")
@@ -123,20 +127,7 @@ def appliances(request):
             appliances_list.save()
             return JsonResponse({"message":"Appliance list has been updated"}, status=201)
 
-def appliance_chart(request):
 
-    labels = []
-    data = []
-
-    queryset = Appliance_list.objects.values('user__username').annotate(user_appliance_list = Sum ('TVs_num')).order_by('-user_TVs_num')
-    for entry in queryset:
-        labels.append(entry['user__username'])
-        data.append(entry['user_TVs_num'])
-
-    return JsonResponse(data={
-        'labels': labels,
-        'data': data
-    })
 
 
 

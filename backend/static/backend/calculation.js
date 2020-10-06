@@ -69,6 +69,7 @@ energy_calculation = ()=>{
                                 // })
                                 document.querySelector('#save').addEventListener('click', ()=>{
                                     appliance_list_check()
+                                    save_appliance_list ()
                                 })                               
 
                         } else if (4.65*30 <= total_usage && total_usage <= 7.75*30) {
@@ -94,6 +95,7 @@ energy_calculation = ()=>{
                             // })
                             document.querySelector('#save').addEventListener('click', ()=>{
                                 appliance_list_check()
+                                save_appliance_list ()
                             })
                         } else {
                             //suck their nuts
@@ -119,6 +121,7 @@ energy_calculation = ()=>{
                             // })
                             document.querySelector('#save').addEventListener('click', ()=>{
                                 appliance_list_check()
+                                save_appliance_list ()
                             })
                         }
 
@@ -155,7 +158,7 @@ energy_calculation = ()=>{
 
     appliance_list_check = ()=> {
 
-        appliance_view_form()
+        // appliance_view_form()
         const user_id = JSON.parse(document.getElementById('user_id').textContent)
             
         fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
@@ -247,13 +250,6 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
                 if (appliance_list.Message==="Appliance list doesn't exist") {
                     redirect_view()
-                    let btn_redirect = document.createElement("BUTTON")
-                    let msg_redirect = document.createElement("P")
-                    msg_redirect.innerText = `Welcome! You have no saved appliance list. Click the button below`
-                    btn_redirect.setAttribute('class', 'btn btn-info btn_redirect')
-                    btn_redirect.innerHTML=`Input`
-                    document.querySelector('#redirection_view').appendChild(msg_redirect)
-                    document.querySelector('#redirection_view').appendChild(btn_redirect)
                     document.querySelector('.btn_redirect').addEventListener('click', ()=>{
                     appliance_view_form()
                     })
@@ -322,7 +318,34 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                 let btn_edit = document.createElement("BUTTON")
                 btn_edit.setAttribute("class","btn btn-info btn_edit d-flex justify-content-center")
                 btn_edit.innerHTML = `Edit`
+                let btn_delete = document.createElement("BUTTON")
+                btn_delete.setAttribute("class","btn btn-danger")
+                btn_delete.innerHTML=`Delete`
                 document.querySelector('#edit_load').appendChild(btn_edit)
+                document.querySelector('#delete_list').appendChild(btn_delete)
+
+
+
+
+                document.querySelector('#delete_event').addEventListener('click', ()=>{
+                    
+                    let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value    
+
+                    let request = new Request(
+                        `/appliances`,
+                        {headers: {'X-CSRFToken': csrftoken}}
+                    );
+                    fetch(request, {
+                        method: 'DELETE'
+                    }).then(response => response.json()).then(result =>{
+                        console.log(result)
+                    })
+
+                })
+
+
+
+
 
                 document.querySelector('.btn_edit').addEventListener('click', ()=>{
 
@@ -535,7 +558,7 @@ function redirect_view(){
             document.querySelector('#update_view').style.display = 'none'
             document.querySelector('#statistics_view').style.display = 'none';
 
-            document.querySelector('#redirection_view').innerHTML=''
+            document.querySelector('#redirect_btn').innerHTML=''
 
 }
 

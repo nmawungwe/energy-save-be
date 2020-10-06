@@ -8,7 +8,7 @@ urlpatterns = [
     path("register", views.register, name="register"),
 
     #API endpoints
-    path("appliances", views.appliances, name="appliances"),
-    path('statistics/', views.appliance_chart, name='appliance-chart')
+    path("appliances", views.appliances, name="appliances")
+
 
 ]

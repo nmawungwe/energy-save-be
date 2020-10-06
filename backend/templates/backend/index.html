@@ -372,6 +372,11 @@
 
             <div>
                 <div id="edit_load" class="btn_edit"></div>
+                <div id="delete_event">
+                    {% csrf_token %}
+                    <div id="delete_list" class="btn_delete"></div>
+                </div>
+ 
             </div>
 
         </div>
@@ -383,6 +388,11 @@
 
 
     <div id ="redirection_view">
+        <div class="alert alert-success btn_redirect" role="alert">
+            <h4 class="alert-heading">Welcome to Energy Save!</h4>
+            <p>Click this message to enter your appliance list!</p>
+          </div>
+        <div id="redirect_btn"></div>
     </div>
 
 
