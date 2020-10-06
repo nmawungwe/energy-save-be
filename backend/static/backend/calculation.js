@@ -58,7 +58,7 @@ energy_calculation = ()=>{
                                 // consumption_notification.innerText = `Above average consumption: ${total_usage} kWh/month`
                                 // btn_notification.innerHTML = `You are above average consumption: ${total_usage} kWh`
                                 document.querySelector('.message').innerHTML=''
-
+                                total_usage = total_usage.toFixed(2)
                                 document.querySelector('.message').innerHTML=`<p>Above average consumption: ${total_usage} kWh/month</p>`
                                 // let btn_save = document.createElement("BUTTON")
                                 // btn_save.setAttribute('class','btn btn-info btn_save')
@@ -82,7 +82,7 @@ energy_calculation = ()=>{
                             // let consumption_notification = document.createElement("P")
                             // btn_notification.setAttribute("class", "btn btn-warning")
                             document.querySelector('.message').innerHTML=''
-
+                            total_usage = total_usage.toFixed(2)
                             document.querySelector('.message').innerHTML=`<p>Average consumption: ${total_usage} kWh/month</p>`
                             // document.querySelector('.modal-body').appendChild(consumption_notification) 
                             // let btn_save = document.createElement("BUTTON")
@@ -106,7 +106,7 @@ energy_calculation = ()=>{
                             // let consumption_notification = document.createElement("P")
                             // btn_notification.setAttribute("class", "btn btn-success")
                             document.querySelector('.message').innerHTML=''
-
+                            total_usage = total_usage.toFixed(2)
                             document.querySelector('.message').innerHTML=`<p>Below average consumption: ${total_usage} kWh/month</p>`
                             // consumption_notification.innerText = `Below average consumption: ${total_usage} kWh/month`
                             // document.querySelector('.modal-body').appendChild(consumption_notification) 
@@ -163,12 +163,21 @@ energy_calculation = ()=>{
         
         if (user_id === appliance_list.user_id) {
             // console.log("WADII")
-            document.querySelector('#alert').innerHTML=`  <div class="alert alert-success alert-dismissible">
+            document.querySelector('#alert').innerHTML=`<div class="alert alert-warning" role="alert">
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Success!</strong> This alert box could indicate a successful or positive action
-            <div><button>Waddi</button></div>.
-          </div>
-          `
+            <h3>An appliance list already exists</h3><br>
+            <p>Do you want to replace it?</p><br>
+            <button id="save" class="btn btn-default" data-dismiss="alert">Yes</button>
+            <button class="btn btn-default" data-dismiss="alert">No</button>
+          </div>`
+            document.querySelector('#save').addEventListener('click', ()=>{
+                appliance_update_list()
+                document.querySelector('#alert').innerHTML=`<div class="alert alert-success" role="alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h3>Appliance list updated!</h3>
+              </div>`
+            })
+
             // let result_msg = document.createElement("P")
             // result_msg.innerText = `You have a saved appliance list do you want to update it?`
             // document.querySelector('#update_msg').appendChild(result_msg)
@@ -187,9 +196,11 @@ energy_calculation = ()=>{
             // document.querySelector('#update').appendChild(btn_cancel)
             }
         else {
-            console.log("WADII")
-            update_view()
-            // save_appliance_list()
+            save_appliance_list ()
+            document.querySelector('#alert').innerHTML=`<div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h3>Appliance list saved!</h3>
+          </div>`
         }
     
     })}
@@ -284,6 +295,7 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                     load_msg.innerText = `Above average consumption`
                     let btn_load = document.createElement("BUTTON")
                     btn_load.setAttribute("class", "btn btn-danger")
+                    total_usage = total_usage.toFixed(2)
                     btn_load.innerHTML = `${total_usage} kWh/month`
                     document.querySelector('#current_load').appendChild(load_msg)
                     document.querySelector('#current_load').appendChild(btn_load)
@@ -292,6 +304,7 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                     load_msg.innerText = `Average consumption`
                     let btn_load = document.createElement("BUTTON")
                     btn_load.setAttribute("class", "btn btn-warning")
+                    total_usage = total_usage.toFixed(2)
                     btn_load.innerHTML = `${total_usage} kWh/month`
                     document.querySelector('#current_load').appendChild(load_msg)
                     document.querySelector('#current_load').appendChild(btn_load)
@@ -300,6 +313,7 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                     load_msg.innerText = `Below average consumption`
                     let btn_load = document.createElement("BUTTON")
                     btn_load.setAttribute("class", "btn btn-success")
+                    total_usage = total_usage.toFixed(2)
                     btn_load.innerHTML = `${total_usage} kWh/month`
                     document.querySelector('#current_load').appendChild(load_msg)
                     document.querySelector('#current_load').appendChild(btn_load)
@@ -394,6 +408,7 @@ document.querySelector('#statistics').addEventListener('click', ()=>{
         status_msg.innerText=`Your current usage:`
         let btn_status = document.createElement("BUTTON")
         btn_status.setAttribute('class', 'btn btn-info')
+        total_usage = total_usage.toFixed(2)
         btn_status.innerHTML=`${total_usage} kWh/month`
         document.querySelector('#user_status').appendChild(status_msg)
         document.querySelector('#user_status').appendChild(btn_status)
