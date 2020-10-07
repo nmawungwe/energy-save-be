@@ -69,7 +69,7 @@ energy_calculation = ()=>{
                                 // })
                                 document.querySelector('#save').addEventListener('click', ()=>{
                                     appliance_list_check()
-                                    save_appliance_list ()
+                                    // save_appliance_list ()
                                 })                               
 
                         } else if (4.65*30 <= total_usage && total_usage <= 7.75*30) {
@@ -95,7 +95,7 @@ energy_calculation = ()=>{
                             // })
                             document.querySelector('#save').addEventListener('click', ()=>{
                                 appliance_list_check()
-                                save_appliance_list ()
+                                // save_appliance_list ()
                             })
                         } else {
                             //suck their nuts
@@ -121,39 +121,11 @@ energy_calculation = ()=>{
                             // })
                             document.querySelector('#save').addEventListener('click', ()=>{
                                 appliance_list_check()
-                                save_appliance_list ()
+                                // save_appliance_list ()
                             })
                         }
 
         
-    save_appliance_list = ()=> {
-        let request = new Request(
-            '/appliances',
-            {headers: {'X-CSRFToken': csrftoken}}
-        );
-        fetch(request, {
-            method: 'POST',
-            body: JSON.stringify({
-                TVs_num: TVs_num,
-                Decoders_num: Decoders_num,
-                SoundSystems_num: SoundSystems_num,
-                Lights_num: Lights_num,
-                Heaters_num: Heaters_num,
-                Stoves_num : Stoves_num,
-                Fridges_num: Fridges_num,
-                Kettles_num: Kettles_num,
-                Microwaves_num: Microwaves_num,
-                Computers_num: Computers_num,
-                Printers_num: Printers_num,
-                Modems_num: Modems_num,
-                ElectricBlankets_num: ElectricBlankets_num,
-                Phones_num: Phones_num
-            })
-        }).then(response => response.json()).then(result=>{
-            console.log(result)
-        })
-        return false;
-    }
 
 
     appliance_list_check = ()=> {
@@ -238,6 +210,36 @@ energy_calculation = ()=>{
         })
         appliance_view_form() 
     }
+
+    save_appliance_list = ()=> {
+        let request = new Request(
+            '/appliances_post',
+            {headers: {'X-CSRFToken': csrftoken}}
+        );
+        fetch(request, {
+            method: 'POST',
+            body: JSON.stringify({
+                TVs_num: TVs_num,
+                Decoders_num: Decoders_num,
+                SoundSystems_num: SoundSystems_num,
+                Lights_num: Lights_num,
+                Heaters_num: Heaters_num,
+                Stoves_num : Stoves_num,
+                Fridges_num: Fridges_num,
+                Kettles_num: Kettles_num,
+                Microwaves_num: Microwaves_num,
+                Computers_num: Computers_num,
+                Printers_num: Printers_num,
+                Modems_num: Modems_num,
+                ElectricBlankets_num: ElectricBlankets_num,
+                Phones_num: Phones_num
+            })
+        }).then(response => response.json()).then(result=>{
+            console.log(result)
+        })
+        return false;
+    }
+
       
 }
 

@@ -8,7 +8,8 @@ urlpatterns = [
     path("register", views.register, name="register"),
 
     #API endpoints
-    path("appliances", views.appliances, name="appliances")
+    path("appliances", views.appliances, name="appliances"),
+    path("appliances_post", views.appliances_post, name="appliances_post")
 
 
 ]
