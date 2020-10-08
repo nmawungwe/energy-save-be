@@ -2,10 +2,17 @@
     text-align: center;
 }
 
-.btn_edit {
+#delete_list {
     text-align: center; 
 }
 
+.inline {
+    display: inline-block
+}
 /* #update_btns{
     text-align: center; 
 } */
+
+.edit{
+    font-size: medium;
+}

@@ -138,19 +138,29 @@ energy_calculation = ()=>{
         
         if (user_id === appliance_list.user_id) {
             // console.log("WADII")
-            document.querySelector('#alert').innerHTML=`<div class="alert alert-warning" role="alert">
+            appliance_view_form()
+            let alert_msg = document.createElement("div")
+            alert_msg.setAttribute('class','alert alert-warning')
+            alert_msg.setAttribute('role','alert')
+            alert_msg.innerHTML=`
             <button type="button" class="close" data-dismiss="alert">×</button>
             <h3>An appliance list already exists</h3><br>
             <p>Do you want to replace it?</p><br>
             <button id="save" class="btn btn-default" data-dismiss="alert">Yes</button>
             <button class="btn btn-default" data-dismiss="alert">No</button>
-          </div>`
+            `
+            document.querySelector('#alert').appendChild(alert_msg)
             document.querySelector('#save').addEventListener('click', ()=>{
                 appliance_update_list()
-                document.querySelector('#alert').innerHTML=`<div class="alert alert-success" role="alert">
+                let alert_msg = document.createElement("div")
+                alert_msg.setAttribute('class','alert alert-success')
+                alert_msg.setAttribute('role','alert')
+                alert_msg.innerHTML=`
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <h3>Appliance list updated!</h3>
-              </div>`
+                `
+                document.querySelector('#alert').appendChild(alert_msg)
+
             })
 
             // let result_msg = document.createElement("P")
@@ -171,11 +181,16 @@ energy_calculation = ()=>{
             // document.querySelector('#update').appendChild(btn_cancel)
             }
         else {
+            appliance_view_form()
             save_appliance_list ()
-            document.querySelector('#alert').innerHTML=`<div class="alert alert-success" role="alert">
+            let alert_msg = document.createElement("div")
+            alert_msg.setAttribute('class','alert alert-success')
+            alert_msg.setAttribute('role','alert')
+            alert_msg.innerHTML=`
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <h3>Appliance list saved!</h3>
-          </div>`
+            <h3>Appliance saved!</h3>`
+            document.querySelector('#alert').appendChild(alert_msg)
+  
         }
     
     })}
@@ -235,7 +250,6 @@ energy_calculation = ()=>{
                 Phones_num: Phones_num
             })
         }).then(response => response.json()).then(result=>{
-            console.log(result)
         })
         return false;
     }
@@ -252,6 +266,14 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                fetch(`/appliances`).then(response=> response.json()).then(appliance_list =>{
                 if (appliance_list.Message==="Appliance list doesn't exist") {
                     redirect_view()
+                    let alert_msg = document.createElement('div')
+                    alert_msg.setAttribute('class', 'alert alert-success btn_redirect')
+                    alert_msg.setAttribute('role','alert')
+                    alert_msg.innerHTML=`
+                    <h4 class="alert-heading">Welcome to Energy Save!</h4>
+                    <p>Click this message to enter your appliance list!</p>
+                    `
+                    document.querySelector('#redirection_view').appendChild(alert_msg)
                     document.querySelector('.btn_redirect').addEventListener('click', ()=>{
                     appliance_view_form()
                     })
@@ -289,47 +311,65 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                 // console.log(total_usage)
 
                 if (total_usage > 7.75*30) {
-                    let load_msg = document.createElement("P")
-                    load_msg.innerText = `Above average consumption`
-                    let btn_load = document.createElement("BUTTON")
-                    btn_load.setAttribute("class", "btn btn-danger")
                     total_usage = total_usage.toFixed(2)
-                    btn_load.innerHTML = `${total_usage} kWh/month`
-                    document.querySelector('#current_load').appendChild(load_msg)
-                    document.querySelector('#current_load').appendChild(btn_load)
+                    let alert_msg = document.createElement("div")
+                    alert_msg.setAttribute('class','alert alert-danger')
+                    alert_msg.setAttribute('role','alert')
+                    alert_msg.innerHTML=`
+                    <h3>Above average consumption</h3>
+                    <p>Current consumption: <b>${total_usage} kWh/month</b></p>`
+                    document.querySelector('#current_load').appendChild(alert_msg)
+                    let edit_link = document.createElement('a')
+                    edit_link.setAttribute('class','edit')
+                    edit_link.innerHTML=`<b>Edit list</b>`
+                    document.querySelector('#current_load').appendChild(alert_msg)
+                    document.querySelector('#edit_load').appendChild(edit_link)
                 } else if (4.65*30 <= total_usage && total_usage <= 7.75*30) {
-                    let load_msg = document.createElement("P")
-                    load_msg.innerText = `Average consumption`
-                    let btn_load = document.createElement("BUTTON")
-                    btn_load.setAttribute("class", "btn btn-warning")
                     total_usage = total_usage.toFixed(2)
-                    btn_load.innerHTML = `${total_usage} kWh/month`
-                    document.querySelector('#current_load').appendChild(load_msg)
-                    document.querySelector('#current_load').appendChild(btn_load)
+                    let alert_msg = document.createElement("div")
+                    alert_msg.setAttribute('class','alert alert-warning')
+                    alert_msg.setAttribute('role','alert')
+                    alert_msg.innerHTML=`
+                    <h3>Average consumption</h3>
+                    <p>Current consumption: <b>${total_usage} kWh/month</b></p>`
+                    document.querySelector('#current_load').appendChild(alert_msg)
+                    let edit_link = document.createElement('a')
+                    edit_link.setAttribute('class','edit')
+                    edit_link.innerHTML=`<b>Edit list</b>`
+                    document.querySelector('#current_load').appendChild(alert_msg)
+                    document.querySelector('#edit_load').appendChild(edit_link)
                 } else {
-                    let load_msg = document.createElement("P")
-                    load_msg.innerText = `Below average consumption`
-                    let btn_load = document.createElement("BUTTON")
-                    btn_load.setAttribute("class", "btn btn-success")
                     total_usage = total_usage.toFixed(2)
-                    btn_load.innerHTML = `${total_usage} kWh/month`
-                    document.querySelector('#current_load').appendChild(load_msg)
-                    document.querySelector('#current_load').appendChild(btn_load)
+                    let alert_msg = document.createElement("div")
+                    alert_msg.setAttribute('class','alert alert-success')
+                    alert_msg.setAttribute('role','alert')
+                    alert_msg.innerHTML=`
+                    <h3>Below average consumption</h3>
+                    <p>Current consumption: <b>${total_usage} kWh/month</b></p>`
+                    document.querySelector('#current_load').appendChild(alert_msg)
+                    let edit_link = document.createElement('a')
+                    edit_link.innerHTML=`<b>Edit list</b>`
+                    edit_link.setAttribute('class','edit')
+                    document.querySelector('#current_load').appendChild(alert_msg)
+                    document.querySelector('#edit_load').appendChild(edit_link)
                 }
 
-                let btn_edit = document.createElement("BUTTON")
-                btn_edit.setAttribute("class","btn btn-info btn_edit d-flex justify-content-center")
-                btn_edit.innerHTML = `Edit`
+
+
                 let btn_delete = document.createElement("BUTTON")
+                btn_delete.setAttribute("type","button")
+                btn_delete.setAttribute("data-toggle","modal")
+                btn_delete.setAttribute("data-target","#delete_list_modal")
                 btn_delete.setAttribute("class","btn btn-danger")
                 btn_delete.innerHTML=`Delete`
-                document.querySelector('#edit_load').appendChild(btn_edit)
                 document.querySelector('#delete_list').appendChild(btn_delete)
 
 
 
 
-                document.querySelector('#delete_event').addEventListener('click', ()=>{
+
+
+                document.querySelector('.delete_post').addEventListener('click', ()=>{
                     
                     let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value    
 
@@ -341,6 +381,15 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
                         method: 'DELETE'
                     }).then(response => response.json()).then(result =>{
                         console.log(result)
+                        appliance_view_form()
+                        let alert_msg = document.createElement('div')
+                        alert_msg.setAttribute('class','alert alert-success')
+                        alert_msg.setAttribute('role','alert')
+                        alert_msg.innerHTML=`
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4 class="alert-heading">Appliance list deleted</h4>
+                        `
+                        document.querySelector('#alert').appendChild(alert_msg)
                     })
 
                 })
@@ -349,7 +398,7 @@ document.querySelector('#appliance_list').addEventListener('click', ()=>{
 
 
 
-                document.querySelector('.btn_edit').addEventListener('click', ()=>{
+                document.querySelector('#edit_load').addEventListener('click', ()=>{
 
                     appliance_view_form()
                     document.querySelector('#TVs_num').value=`${appliance_list.TVs_num}`
@@ -429,14 +478,14 @@ document.querySelector('#statistics').addEventListener('click', ()=>{
         +(appliance_list.Modems_num*Modem)
         +(appliance_list.ElectricBlankets_num*Electric_blanket)+(appliance_list.Phones_num*Phone))*30
 
-        let status_msg = document.createElement("P")
-        status_msg.innerText=`Your current usage:`
-        let btn_status = document.createElement("BUTTON")
-        btn_status.setAttribute('class', 'btn btn-info')
+
         total_usage = total_usage.toFixed(2)
-        btn_status.innerHTML=`${total_usage} kWh/month`
-        document.querySelector('#user_status').appendChild(status_msg)
-        document.querySelector('#user_status').appendChild(btn_status)
+        let alert_msg = document.createElement("div")
+        alert_msg.setAttribute('class','alert alert-info')
+        alert_msg.setAttribute('role','alert')
+        alert_msg.innerHTML=`
+        <h4>Your current household consumption: <b>${total_usage} kWh/month</b></h4>`
+        document.querySelector('#user_status').appendChild(alert_msg)
 
 
 
@@ -492,6 +541,7 @@ function appliance_view_form(){
     document.querySelector('#redirection_view').style.display = 'none'
     document.querySelector('#update_view').style.display = 'none'
     document.querySelector('#statistics_view').style.display = 'none';
+    document.querySelector('#alert').innerHTML=''
 
     
 }
@@ -522,6 +572,7 @@ function appliance_view_list(){
     document.querySelector('.Modems_num').innerHTML=''
     document.querySelector('.ElectricBlankets_num').innerHTML=''
     document.querySelector('.Phones_num').innerHTML=''
+    document.querySelector('.btn_delete').innerHTML=''
 
 }
 
@@ -560,7 +611,9 @@ function redirect_view(){
             document.querySelector('#update_view').style.display = 'none'
             document.querySelector('#statistics_view').style.display = 'none';
 
-            document.querySelector('#redirect_btn').innerHTML=''
+            document.querySelector('#redirection_view').innerHTML=''
+
+
 
 }
 

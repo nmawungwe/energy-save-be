@@ -277,6 +277,7 @@
     <div id="appliance_view_list">
         <div id="appliance_list">
         <div id="current_load"></div>
+        <div id="edit_load"></div>
         <br>
 
    
@@ -362,11 +363,30 @@
             </div>
 
             <div>
-                <div id="edit_load" class="btn_edit"></div>
+
                 <div id="delete_event">
                     {% csrf_token %}
                     <div id="delete_list" class="btn_delete"></div>
                 </div>
+                    <div class="modal" id="delete_list_modal" tabindex="-1" role="dialog" aria-labelledby="save_modal_label" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="save_modal_label">Energy consumption</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="delete_message"><p>Are you sure you want to delete this appliance list?</p></div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" id="save" class="btn btn-info delete_post" data-dismiss="modal">Delete list</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
  
             </div>
 
@@ -379,11 +399,6 @@
 
 
     <div id ="redirection_view">
-        <div class="alert alert-success btn_redirect" role="alert">
-            <h4 class="alert-heading">Welcome to Energy Save!</h4>
-            <p>Click this message to enter your appliance list!</p>
-          </div>
-        <div id="redirect_btn"></div>
     </div>
 
 
